@@ -1,12 +1,16 @@
 {
   "name": "vgscode",
   "version": "1.0.0",
-  "description": "",
+  "description": "Validate Generate Sanitize Code",
   "type": "module",
   "types": "config.d.ts",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smvrnn/vgscode.git"
   },
   "keywords": [
   "iin",
