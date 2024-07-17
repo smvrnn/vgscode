@@ -88,7 +88,8 @@ export function vBIN(str) {
     str = sNumberToString(str);
 
     if (str.length !== 12) {
-        throw new Error("BIN code must be a 'string'/number of 12 digits");
+        return false
+        //throw new Error("BIN code must be a 'string'/number of 12 digits");
     }
 
 
@@ -97,18 +98,21 @@ export function vBIN(str) {
 
     const month = parseInt(str.substring(2, 4), 10);
     if (month < 1 || month > 12) {
-        throw new Error("The 3rd and 4th digits must represent a valid month (01-12)");
+        return false
+        //throw new Error("The 3rd and 4th digits must represent a valid month (01-12)");
     }
 
 
     const fifthDigit = code[4];
     if (![4, 5, 6].includes(fifthDigit)) {
-        throw new Error("The 5th digit must be 4, 5, or 6");
+        return false
+        //throw new Error("The 5th digit must be 4, 5, or 6");
     }
 
     const sixthDigit = code[5];
     if (![0, 1, 2, 3].includes(sixthDigit)) {
-        throw new Error("The 6th digit must be 0, 1, 2, or 3");
+        return false
+        //throw new Error("The 6th digit must be 0, 1, 2, or 3");
     }
 
 

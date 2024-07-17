@@ -1,6 +1,6 @@
 {
   "name": "vgscode",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Validate Generate Sanitize Code",
   "type": "module",
   "types": "config.d.ts",
@@ -17,10 +17,11 @@
   "bin",
   "validate",
   "generate"
-],
+  ],
   "author": {
     "name": "Yerlan Yeraliyev",
-    "username": "smvrnn"
+    "username": "smvrnn",
+    "hub": "solutionary inc."
   },
   "license": "MIT"
 }

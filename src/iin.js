@@ -53,14 +53,16 @@ export function vIIN(str) {
     sNumberToString(str);
 
     if (str.length !== 12) {
-        throw new Error("IIN code must be a 'string'/number of 12 digits");
+        return false
+        //throw new Error("IIN code must be a 'string'/number of 12 digits");
     }
 
     const code = str.split('').map(Number);
 
     const fifthDigit = code[4];
     if (![0, 1, 2, 3].includes(fifthDigit)) {
-        throw new Error("The 5th digit must be 0, 1, 2, or 3");
+        return false
+        //throw new Error("The 5th digit must be 0, 1, 2, or 3");
     }
 
     const mainCode = code.slice(0, 11);
