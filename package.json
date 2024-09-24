@@ -1,27 +1,35 @@
 {
   "name": "vgscode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Validate Generate Sanitize Code",
   "type": "module",
   "types": "config.d.ts",
+  "exports": {
+    "import": "./index.js",
+    "require": "./index.cjs"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rollup": "npx rollup -c"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/smvrnn/vgscode.git"
   },
   "keywords": [
-  "iin",
-  "bin",
-  "validate",
-  "generate"
+    "iin",
+    "bin",
+    "validate",
+    "generate"
   ],
   "author": {
     "name": "Yerlan Yeraliyev",
     "username": "smvrnn",
     "hub": "solutionary inc."
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^4.22.4"
+  }
 }

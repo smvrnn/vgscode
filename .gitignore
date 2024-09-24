@@ -131,3 +131,7 @@ dist
 
 #vscode
 .vscode
+
+#self
+package-lock.json
+pnpm-lock.yaml
