@@ -1,5 +1,5 @@
 export default {
-  input: "./index.js",
+  input: "./build/index.js",
   output: {
     file: "index.cjs",
     format: "cjs",

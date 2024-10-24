@@ -1,4 +1,4 @@
-import { sNumberToString } from "./sanitizers.js";
+import { sNumberToString } from "../sanitizers.js";
 
 export function gIIN(str = "") {
   sNumberToString(str);
@@ -28,7 +28,7 @@ export function gIIN(str = "") {
 
   const weights2 = [3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2];
 
-  function calculateSum(code, weights) {
+  function calculateSum(code: number[], weights: number[]) {
     return code.reduce((sum, digit, index) => sum + digit * weights[index], 0);
   }
 
@@ -45,7 +45,7 @@ export function gIIN(str = "") {
   return str + controlDigit.toString();
 }
 
-export function vIIN(str) {
+export function vIIN(str: string) {
   sNumberToString(str);
 
   if (str.length !== 12) {
@@ -68,7 +68,7 @@ export function vIIN(str) {
 
   const weights2 = [3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2];
 
-  function calculateSum(code, weights) {
+  function calculateSum(code: number[], weights: number[]) {
     return code.reduce((sum, digit, index) => sum + digit * weights[index], 0);
   }
 

@@ -1,4 +1,4 @@
-export function sNumberToString(str) {
+export function sNumberToString(str: number | string) {
   if (typeof str === "number") {
     return (str = str + "");
   } else if (typeof str === "string") {
@@ -10,7 +10,7 @@ export function sNumberToString(str) {
   }
 }
 
-export function sTrimStart(str) {
+export function sTrimStart(str: string) {
   var i = 0;
   var ws = /\s/;
 
@@ -21,7 +21,7 @@ export function sTrimStart(str) {
   return str.slice(i);
 }
 
-export function sTrimEnd(str) {
+export function sTrimEnd(str: string) {
   var i = str.length - 1;
   var ws = /\s/;
 
@@ -32,7 +32,7 @@ export function sTrimEnd(str) {
   return str.slice(0, i + 1);
 }
 
-export function sTrimBoth(str) {
+export function sTrimBoth(str: string) {
   var str = str.replace(/^\s\s*/, ""),
     ws = /\s/,
     i = str.length;
@@ -41,11 +41,11 @@ export function sTrimBoth(str) {
 }
 // https://blog.stevenlevithan.com/archives/faster-trim-javascript
 
-export function sTrimAll(str) {
+export function sTrimAll(str: string) {
   return str.replace(/\s/g, "");
 }
 
-export function sRemoveNonDigits(str) {
+export function sRemoveNonDigits(str: string) {
   return str.replace(/\D/g, "");
 }
 

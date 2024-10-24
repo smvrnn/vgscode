@@ -1,5 +1,5 @@
-import { vIIN, gIIN } from "./src/iin.js";
-import { vBIN, gBIN } from "./src/bin.js";
+import { vIIN, gIIN } from "./kazakhstan/iin.js";
+import { vBIN, gBIN } from "./kazakhstan/bin.js";
 import {
   sNumberToString,
   sTrimStart,
@@ -7,7 +7,7 @@ import {
   sTrimBoth,
   sTrimAll,
   sRemoveNonDigits,
-} from "./src/sanitizers.js";
+} from "./sanitizers.js";
 
 const vgscode = {
   gIIN,
