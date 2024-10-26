@@ -1,5 +1,6 @@
 !build/
 src/
+.github
 .vscode
 .gitattributes
 .gitignore
@@ -7,3 +8,4 @@ src/
 nodemon.json
 rollup.config.js
 tsconfig.json
+*.tgz
