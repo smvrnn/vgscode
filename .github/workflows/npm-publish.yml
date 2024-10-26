@@ -20,4 +20,4 @@ jobs:
       - run: npm rollup
       - run: npm publish --provenance
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
