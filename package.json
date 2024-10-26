@@ -6,7 +6,7 @@
   "types": "./build/index.d.ts",
   "exports": {
     "import": "./build/index.js",
-    "require": "./index.cjs"
+    "require": "./build/index.cjs"
   },
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "bin",
     "validate",
     "generate",
-    "Kazakhstan"
+    "kazakhstan"
   ],
   "author": {
     "name": "Yerlan Yeraliyev",

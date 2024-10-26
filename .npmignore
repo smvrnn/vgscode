@@ -1,0 +1,9 @@
+!build/
+src/
+.vscode
+.gitattributes
+.gitignore
+.prettierrc
+nodemon.json
+rollup.config.js
+tsconfig.json

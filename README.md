@@ -4,6 +4,7 @@ Validate Generate Sanitize Code
 
 List of supported codes:
 
+*. Contributions are welcome
 1. Kazakhstan: IIN, BIN
 2. ...
 
