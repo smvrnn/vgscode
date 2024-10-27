@@ -1,4 +1,5 @@
-!build/
+!dist/
+build/
 src/
 .vscode
 .gitattributes
@@ -7,3 +8,5 @@ src/
 nodemon.json
 rollup.config.js
 tsconfig.json
+build.config.ts
+*.tgz
