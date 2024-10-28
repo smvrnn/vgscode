@@ -3,18 +3,22 @@
   "version": "1.0.5",
   "description": "Validate Generate Sanitize Code",
   "type": "module",
-  "exports": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    "require": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    },
+    "import": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
   "scripts": {
-    "dev": "npx nodemon",
-    "dist": "npx unbuild",
-    "build": "rimraf ./build && npx tsc && copyfiles -u 1 ./build/",
-    "rollup": "npx rollup -c"
+    "dev": "npx tsx watch --clear-screen=false ./src/index.ts",
+    "build": "npx pkgroll --clean-dist --minify"
   },
   "repository": {
     "type": "git",
@@ -34,14 +38,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "rollup": "^4.22.4",
-    "@types/express": "^5.0.0",
     "@types/node": "^22.7.4",
-    "copyfiles": "^2.4.1",
-    "nodemon": "^3.1.7",
-    "rimraf": "^6.0.1",
+    "pkgroll": "^2.5.1",
     "tsx": "^4.19.1",
-    "typescript": "^5.6.3",
-    "unbuild": "^2.0.0"
+    "typescript": "^5.6.3"
   }
 }
