@@ -2,6 +2,7 @@
 build/
 src/
 .vscode
+.github
 .gitattributes
 .gitignore
 .prettierrc
