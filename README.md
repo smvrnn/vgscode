@@ -65,8 +65,8 @@ vgscode.vIIN("320229474023"); // false
 
 ```js
 // Generate complete codes by providing a prefix
-vgscode.gBIN("320243"); // Example output: "320243952485"
-vgscode.gIIN("320229"); // Example output: "320229980830"
+vgscode.gBIN("320243"); // "320243952485"
+vgscode.gIIN("320229"); // "320229980830"
 ```
 
 ### Sanitization

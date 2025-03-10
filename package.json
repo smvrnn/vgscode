@@ -21,7 +21,9 @@
     "dev": "npx tsx watch --clear-screen=false ./src/index.ts",
     "build": "npx pkgroll --clean-dist --minify",
     "test": "vitest",
-    "vat": "npm version $1 && git push && git push --tags"
+    "vat:patch": "npm version patch && git push && git push --tags",
+    "vat:minor": "npm version minor && git push && git push --tags",
+    "vat:major": "npm version major && git push && git push --tags"
   },
   "repository": {
     "type": "git",
