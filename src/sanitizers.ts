@@ -1,46 +1,3 @@
-export function sNumberToString(str: number | string) {
-  if (typeof str === "number") {
-    return (str = str + "");
-  } else if (typeof str === "string") {
-    return str;
-  } else {
-    throw new TypeError(
-      `Expected a 'string'/number but received a ${typeof str}`
-    );
-  }
-}
-
-export function sTrimStart(str: string) {
-  var i = 0;
-  var ws = /\s/;
-
-  while (ws.test(str.charAt(i))) {
-    i++;
-  }
-
-  return str.slice(i);
-}
-
-export function sTrimEnd(str: string) {
-  var i = str.length - 1;
-  var ws = /\s/;
-
-  while (ws.test(str.charAt(i))) {
-    i--;
-  }
-
-  return str.slice(0, i + 1);
-}
-
-export function sTrimBoth(str: string) {
-  var str = str.replace(/^\s\s*/, ""),
-    ws = /\s/,
-    i = str.length;
-  while (ws.test(str.charAt(--i)));
-  return str.slice(0, i + 1);
-}
-// https://blog.stevenlevithan.com/archives/faster-trim-javascript
-
 export function sTrimAll(str: string) {
   return str.replace(/\s/g, "");
 }
@@ -49,11 +6,32 @@ export function sRemoveNonDigits(str: string) {
   return str.replace(/\D/g, "");
 }
 
+type ValidatorFn = (code: string) => boolean;
+
+export function sExtractCodes(
+  text: string,
+  length: number,
+  validator: ValidatorFn
+): string[] {
+  const validCodes = new Array<string>(); //new Set<string>();
+  const numberSequences = text.match(/\d+/g) || [];
+
+  for (const sequence of numberSequences) {
+    if (sequence.length >= length) {
+      for (let i = 0; i <= sequence.length - length; i++) {
+        const possibleCode = sequence.slice(i, i + length);
+        if (validator(possibleCode)) {
+          validCodes.push(possibleCode); //.add
+        }
+      }
+    }
+  }
+
+  return Array.from(validCodes);
+}
+
 export default {
-  sNumberToString,
-  sTrimStart,
-  sTrimEnd,
-  sTrimBoth,
   sTrimAll,
   sRemoveNonDigits,
+  sExtractCodes,
 };

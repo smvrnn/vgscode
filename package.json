@@ -14,11 +14,14 @@
     "import": {
       "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
-    }
+    },
+    "default": "./dist/index.mjs"
   },
   "scripts": {
     "dev": "npx tsx watch --clear-screen=false ./src/index.ts",
-    "build": "npx pkgroll --clean-dist --minify"
+    "build": "npx pkgroll --clean-dist --minify",
+    "test": "vitest",
+    "vat": "npm version $1 && git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -29,6 +32,8 @@
     "bin",
     "validate",
     "generate",
+    "sanitize",
+    "extract",
     "kazakhstan"
   ],
   "author": {
@@ -41,6 +46,7 @@
     "@types/node": "^22.7.4",
     "pkgroll": "^2.5.1",
     "tsx": "^4.19.1",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vitest": "^3.0.8"
   }
 }

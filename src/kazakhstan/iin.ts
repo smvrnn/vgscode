@@ -1,88 +1,44 @@
-import { sNumberToString } from "../sanitizers.js";
+import { calculateControlDigit } from "./kz.js";
 
-export function gIIN(str = "") {
-  sNumberToString(str);
+export function gIIN(value: string | number = ""): string {
+  let str = typeof value === "string" ? value : String(value);
 
-  if (typeof str !== "string" || str.length > 11 || !/^\d*$/.test(str)) {
+  if (!/^\d*$/.test(str) || str.length > 11) {
     throw new Error("Input value must be a 'string'/number of 0 to 11 digits");
   }
 
+  while (str.length < 4) {
+    str += Math.floor(Math.random() * 10).toString();
+  }
+
+  if (str.length === 4) {
+    str += Math.floor(Math.random() * 4).toString();
+  }
+
   if (str.length >= 5) {
-    const fifthDigit = parseInt(str[4], 10);
-    if (![0, 1, 2, 3].includes(fifthDigit)) {
+    const fifthDigit = parseInt(str.charAt(4), 10);
+    if (isNaN(fifthDigit) || fifthDigit < 0 || fifthDigit > 3) {
       throw new Error("The 5th digit must be 0, 1, 2, or 3");
     }
   }
 
   while (str.length < 11) {
-    if (str.length === 4) {
-      str += Math.floor(Math.random() * 4).toString();
-    } else {
-      str += Math.floor(Math.random() * 10).toString();
-    }
+    str += Math.floor(Math.random() * 10).toString();
   }
 
-  const mainCode = str.split("").map(Number);
-
-  const weights1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
-  const weights2 = [3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2];
-
-  function calculateSum(code: number[], weights: number[]) {
-    return code.reduce((sum, digit, index) => sum + digit * weights[index], 0);
-  }
-
-  let controlDigit = calculateSum(mainCode, weights1) % 11;
-
-  if (controlDigit === 10) {
-    controlDigit = calculateSum(mainCode, weights2) % 11;
-  }
-
-  if (controlDigit === 10) {
-    controlDigit = 0;
-  }
+  const controlDigit = calculateControlDigit(str);
 
   return str + controlDigit.toString();
 }
 
-export function vIIN(str: string) {
-  sNumberToString(str);
+export function vIIN(value: string | number): boolean {
+  const str = typeof value === "string" ? value : String(value);
+  if (str.length !== 12) return false;
 
-  if (str.length !== 12) {
-    return false;
-    //throw new Error("IIN code must be a 'string'/number of 12 digits");
-  }
+  const fifthDigit = parseInt(str.charAt(4), 10);
+  if (isNaN(fifthDigit) || fifthDigit < 0 || fifthDigit > 3) return false;
 
-  const code = str.split("").map(Number);
-
-  const fifthDigit = code[4];
-  if (![0, 1, 2, 3].includes(fifthDigit)) {
-    return false;
-    //throw new Error("The 5th digit must be 0, 1, 2, or 3");
-  }
-
-  const mainCode = code.slice(0, 11);
-  const controlDigitFromStr = code[11];
-
-  const weights1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
-  const weights2 = [3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2];
-
-  function calculateSum(code: number[], weights: number[]) {
-    return code.reduce((sum, digit, index) => sum + digit * weights[index], 0);
-  }
-
-  let controlDigit = calculateSum(mainCode, weights1) % 11;
-
-  if (controlDigit === 10) {
-    controlDigit = calculateSum(mainCode, weights2) % 11;
-  }
-
-  if (controlDigit === 10) {
-    controlDigit = 0;
-  }
-
-  return controlDigit === controlDigitFromStr;
+  return calculateControlDigit(str) === parseInt(str.charAt(11), 10);
 }
 
 export default { vIIN, gIIN };

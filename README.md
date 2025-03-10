@@ -1,56 +1,95 @@
 # VGSCode
 
-Validate Generate Sanitize Code
+**Validate • Generate • Sanitize Code**
 
-List of supported codes:
+VGSCode is a lightweight library that allows you to validate, generate, and sanitize various codes. Contributions are very welcome!
 
-*. Contributions are welcome
-1. Kazakhstan: IIN, BIN
-2. ...
+---
 
-## Install
+## Supported Countries & Codes
+
+| Country    | Supported Codes    |
+| ---------- | ------------------ |
+| Kazakhstan | IIN, BIN           |
+| ...        | (More coming soon) |
+
+---
+
+## Installation
+
+Install via npm or pnpm:
 
 ```sh
 npm install vgscode
+```
 
+or
+
+```sh
 pnpm install vgscode
 ```
 
-## Usage ES6
+---
 
-```javascript
+## Usage
+
+### ES6 Modules
+
+Import the library in your project:
+
+```js
 import vgscode from "vgscode";
 ```
 
-## Usage Legacy
+### CommonJS (Legacy)
 
-```javascript
+For CommonJS projects, require the package:
+
+```js
 const vgscode = require("vgscode");
 ```
 
-## Example
+---
 
-### validate
+## Examples
 
-```javascript
-vgscode.vBIN("320243026191"); //true
-vgscode.vIIN("320229474023"); //false
+### Validation
+
+```js
+// Validate BIN and IIN codes
+vgscode.vBIN("320243026191"); // true
+vgscode.vIIN("320229474023"); // false
 ```
 
-### generate
+### Generation
 
-```javascript
-vgscode.gBIN("320243"); //320243952485
-vgscode.gIIN("320229"); //320229980830
+```js
+// Generate complete codes by providing a prefix
+vgscode.gBIN("320243"); // Example output: "320243952485"
+vgscode.gIIN("320229"); // Example output: "320229980830"
 ```
 
-### sanitize
+### Sanitization
 
-```javascript
-vgscode.sNumberToString(320229474021); //320229474021
-vgscode.sTrimStart("  320229474021"); //320229474021
-vgscode.sTrimEnd("320229474021   "); //320229474021
-vgscode.sTrimBoth("  320229474021  "); //320229474021
-vgscode.sTrimAll("32 0229  4740 21"); //320229474021
-vgscode.sRemoveNonDigits("320#%2294 74fwef021"); //320229474021
+```js
+// Remove all whitespace characters from the string
+vgscode.sTrimAll("32 0229  4740 21"); // "320229474021"
+
+// Remove all non-digit characters
+vgscode.sRemoveNonDigits("320#%2294 74fwef021"); // "320229474021"
+
+// Extract codes from a text
+vgscode.sExtractCodes("Some text 320229474021 and more text", 12, vgscode.vBIN); //["320243026191"]
 ```
+
+---
+
+## Contributing
+
+Contributions are encouraged! Feel free to submit issues or pull requests on [GitHub](https://github.com/smvrnn/vgscode).
+
+---
+
+## License
+
+VGSCode is released under the [MIT License](./LICENSE).
