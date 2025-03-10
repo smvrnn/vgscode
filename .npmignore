@@ -1,6 +1,8 @@
 !dist/
 build/
 src/
+tests/
+vitest.config.ts
 .vscode
 .github
 .gitattributes
